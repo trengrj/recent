@@ -20,8 +20,8 @@ def parse_history(history):
     return re.sub(r"^\s+\d+\s+", "", history)
 
 def create_connection():
-    DB_PATH = os.environ['HOME'] + "/.recent/db"
-    return sqlite3.connect(DB_PATH)
+    recent_db = os.environ['HOME'] + "/.recent.db"
+    return sqlite3.connect(recent_db)
 
 def log():
     parser = argparse.ArgumentParser()
@@ -32,8 +32,9 @@ def log():
     conn = create_connection()
     c = conn.cursor()
     c.execute('''CREATE TABLE IF NOT EXISTS commands
-                     (command_dt timestamp, command text, pid int, return_val int, pwd text)''')
-    c.execute("INSERT INTO commands VALUES (datetime('now','localtime'), ?, ?, ?, ?)", (parse_history(args.command), args.pid, args.return_val, os.environ['PWD']))
+        (command_dt timestamp, command text, pid int, return_val int, pwd text)''')
+    c.execute("INSERT INTO commands VALUES (datetime('now','localtime'), ?, ?, ?, ?)",
+        (parse_history(args.command), args.pid, args.return_val, os.environ['PWD']))
     conn.commit()
     conn.close()
 
@@ -47,5 +48,5 @@ def main():
     c = conn.cursor()
     for row in c.execute('''select command_dt, command from (select * from commands where command like ?
                             order by command_dt desc limit ?) order by command_dt''', (pattern, args.n)):
-        print bcolors.WARNING + row[0] + bcolors.ENDC + ' ' + row[1]
+        print(bcolors.WARNING + row[0] + bcolors.ENDC + ' ' + row[1])
     conn.close()
