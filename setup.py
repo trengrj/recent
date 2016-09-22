@@ -1,24 +1,24 @@
-"""A bash history logging module
-"""
+#!/usr/bin/env python
 
-# Always prefer setuptools over distutils
 from setuptools import setup, find_packages
-# To use a consistent encoding
 from codecs import open
 from os import path
+import sys
 
 here = path.abspath(path.dirname(__file__))
 
-# Get the long description from the README file
-#with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
-#    long_description = f.read()
+with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+    long_description = f.read()
+
+if sys.version_info < (2, 7):
+    install_requires.append('argparse>=1.2.1')
 
 setup(
     name='recent',
     version='0.0.1',
 
     description='log bash history to an sqlite database',
-    long_description='',
+    long_description=long_description,
 
     # The project's main homepage.
     url='https://github.com/trengrj/recent',
@@ -27,7 +27,6 @@ setup(
     author='John Trengrove',
     author_email='john@retrofilter.com',
 
-    # Choose your license
     license='MIT',
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -48,12 +47,8 @@ setup(
         'Programming Language :: Python :: 3.5',
     ],
 
-    # What does your project relate to?
     keywords='logging bash history database',
 
-    # You can just specify the packages manually here if your project is
-    # simple. Or you can use find_packages().
-    # packages=find_packages(exclude=['contrib', 'docs', 'tests']),
     py_modules=["recent"],
 
     entry_points={
