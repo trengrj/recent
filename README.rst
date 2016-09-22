@@ -12,7 +12,7 @@ is still a unstructured format with limited querying ability.
 Recent does the following:
 
 1. Logs current localtime, command text, current pid, command return value,
-working directory to an sqlite database in ~/.recent.db
+   working directory to an sqlite database in ``~/.recent.db``.
 
 2. Logs history immediately, rather than at the close of the session.
 
@@ -23,39 +23,42 @@ installation instructions
 
 Install the recent pip package:
 
-> pip install recent
+``pip install recent``
 
-Add the following to your .bashrc:
+Add the following to your .bashrc or .bash_profile:
 
-> export PROMPT_COMMAND='RET=$?;log-recent "$(history 1)" $$ $RET'
+``export PROMPT_COMMAND='RET=$?;log-recent "$(history 1)" $$ $RET'``
+
+And start a new shell.
 
 usage
 -----
 
 Look at your current history using recent:
 
-> recent
+``recent``
 
 Search for a pattern as follows:
 
-> recent git
+``recent git``
 
 For more information see the help:
 
-> recent -h
+``recent -h``
 
 Not currently recent doesn't integrate with bash commands such as
 Ctrl-R, but this is in the pipeline.
 
 You can directly query your history using the following:
 
-> sqlite3 ~/.recent.db "select * from commands limit 10"
+``sqlite3 ~/.recent.db "select * from commands limit 10"``
 
 dev installation instructions
 -----------------------------
 
-> git clone https://github.com/trengrj/recent && cd recent
-> pip install -e .
+``git clone https://github.com/trengrj/recent && cd recent``
+
+``pip install -e .``
 
 security
 --------
