@@ -15,7 +15,7 @@ if sys.version_info < (2, 7):
 
 setup(
     name='recent',
-    version='0.0.1',
+    version='0.0.2',
 
     description='log bash history to an sqlite database',
     long_description=long_description,
