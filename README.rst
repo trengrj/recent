@@ -4,9 +4,9 @@ recent
 
 Recent is a more structured way to log your bash history.
 
-The standard ~/.bash_history file in inadequate in many ways, its
+The standard ~/.bash_history file is inadequate in many ways, its
 worst fault is to by default log only 500 history entries, with no timestamp.
-You can alter your bash HISTFILESIZE and HISTTIMEFORMAT but it
+You can alter your bash HISTFILESIZE and HISTTIMEFORMAT variables but it
 is still a unstructured format with limited querying ability.
 
 Recent does the following:
