@@ -1,2 +1,2 @@
 #/bin/bash
-export PROMPT_COMMAND='RET=$?;log-recent "$(history 1)" $$ $RET'
+export PROMPT_COMMAND='log-recent -r $? -c "$(history 1)" -p $$'

@@ -44,17 +44,16 @@ def build_schema(conn):
         c.execute(sql.CREATE_DATE_INDEX)
         conn.commit()
 
-
 def log():
     parser = argparse.ArgumentParser()
-    parser.add_argument("command")
-    parser.add_argument("pid")
-    parser.add_argument("return_val")
+    parser.add_argument("-r", "--return_value", default=0)
+    parser.add_argument("-c", "--command", default='')
+    parser.add_argument("-p", "--pid", default=0)
     args = parser.parse_args()
     conn = create_connection()
     c = conn.cursor()
     c.execute(sql.INSERT_ROW,
-        (parse_history(args.command), args.pid, args.return_val, os.environ['PWD']))
+        (parse_history(args.command), args.pid, args.return_value, os.environ['PWD']))
     conn.commit()
     conn.close()
 
