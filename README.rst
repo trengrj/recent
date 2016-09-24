@@ -21,6 +21,8 @@ Recent does the following:
 installation instructions
 -------------------------
 
+You need will need sqlite installed.
+
 Install the recent pip package:
 
 ``pip install recent``
