@@ -59,7 +59,7 @@ class Session:
         seed = "{}-{}-{}-{}-{}".format(
             os.getenv('TERM_SESSION_ID', ''), os.getenv('WINDOWID', ''), os.getenv('SHLVL', ''),
             os.getenv('TMUX', ''), os.getenv('TMUX_PANE',''), os.getenv('STY',''), pid)
-        self.id = hashlib.md5(seed).hexdigest()
+        self.id = hashlib.md5(seed.encode('utf-8')).hexdigest()
 
     def update(self, conn):
         c = conn.cursor()
