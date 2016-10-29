@@ -29,7 +29,7 @@ Install the recent pip package:
 
 Add the following to your .bashrc or .bash_profile:
 
-``export PROMPT_COMMAND='log-recent -r $? -c "$(history 1)" -p $$'``
+``export PROMPT_COMMAND='log-recent -r $? -c "$(HISTTIMEFORMAT= history 1)" -p $$'``
 
 And start a new shell.
 

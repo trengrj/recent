@@ -1,2 +1,2 @@
 #/bin/bash
-export PROMPT_COMMAND='log-recent -r $? -c "$(history 1)" -p $$'
+export PROMPT_COMMAND='log-recent -r $? -c "$(HISTTIMEFORMAT= history 1)" -p $$'
