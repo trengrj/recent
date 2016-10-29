@@ -56,7 +56,7 @@ class Session:
         # TMUX, TMUX_PANE for tmux
         # STY for GNU screen
         # SHLVL handles nested shells
-        seed = "{}-{}-{}-{}-{}".format(
+        seed = "{}-{}-{}-{}-{}-{}-{}".format(
             os.getenv('TERM_SESSION_ID', ''), os.getenv('WINDOWID', ''), os.getenv('SHLVL', ''),
             os.getenv('TMUX', ''), os.getenv('TMUX_PANE',''), os.getenv('STY',''), pid)
         self.id = hashlib.md5(seed.encode('utf-8')).hexdigest()
