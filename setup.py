@@ -4,6 +4,7 @@ from setuptools import setup, find_packages
 from codecs import open
 from os import path
 import sys
+import fastentrypoints
 
 here = path.abspath(path.dirname(__file__))
 
@@ -12,7 +13,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='recent',
-    version='0.1.2',
+    version='0.1.3',
 
     description='log bash history to an sqlite database',
     long_description=long_description,
