@@ -185,11 +185,16 @@ def main():
     parser.add_argument('-n', metavar=('20'), help='max results to return', default=20)
     parser.add_argument('-w', metavar=('/folder'), help='working directory', default='')
     parser.add_argument('-d', metavar=('2016-10-01'), help='date in YYYY-MM-DD, YYYY-MM, or YYYY format', default='')
+    parser.add_argument('--hide_time', help='dont display time in command output', action='store_true')
     args = parser.parse_args()
     conn = create_connection()
     c = conn.cursor()
     query, parameters = query_builder(args)
     for row in c.execute(query, parameters):
-        if row[0] and row[1]:
+        if not(row[0] and row[1]):
+            continue
+        if args.hide_time:
+            print(row[1])
+        if not args.hide_time:
             print(Term.WARNING + row[0] + Term.ENDC + ' ' + row[1])
     conn.close()
